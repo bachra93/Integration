@@ -1,0 +1,36 @@
+{# empty Twig template #}
+    {% extends '::base.html.twig' %}
+      {% block body %}
+          <div id="h">Espace de discussion</div>
+ <a href="{{path("Ajouter_poste")}} ">Ajouter</a>
+<table border=3>
+    <tr>
+        
+        <td>Titre</td>
+        <td>Publier Le</td>
+        
+        <td > Edit</td>
+     
+    </tr>
+<tr>
+    
+{% for postes in postes  %}
+    
+    <td> {{postes.Titre}}</td>
+ 
+    <td> {{postes.date_published|date('Y-m-d H:i:s')}} </td>
+       
+
+       
+     
+            <td><a href="{{path("Liste_commentaire",{'id': postes.id})}} ">Voir </a></td>
+             <td><a href="{{path("Supprimer_poste",{'id': postes.id})}} ">Supprimer </a></td>
+             
+    
+</tr>
+
+    {% endfor %}
+    </table>
+     {% endblock %}
+{# empty Twig template #}
+
