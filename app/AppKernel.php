@@ -19,7 +19,8 @@ class AppKernel extends Kernel
 
             new GV\ForumBundle\GVForumBundle(),
             new GV\UserBundle\GVUserBundle(),
-            new FOS\UserBundle\FOSUserBundle(), 
+            new FOS\UserBundle\FOSUserBundle(),
+            new GV\VilleBundle\GVVilleBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

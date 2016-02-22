@@ -127,6 +127,62 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/ville')) {
+            // gv_ville_homepage
+            if (0 === strpos($pathinfo, '/ville/hello') && preg_match('#^/ville/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'gv_ville_homepage')), array (  '_controller' => 'GV\\VilleBundle\\Controller\\DefaultController::indexAction',));
+            }
+
+            // AjouterVille
+            if ($pathinfo === '/ville/ajouter') {
+                return array (  '_controller' => 'GV\\VilleBundle\\Controller\\VilleController::ajouterVilleAction',  '_route' => 'AjouterVille',);
+            }
+
+            // DeleteVille
+            if (0 === strpos($pathinfo, '/ville/supprimer') && preg_match('#^/ville/supprimer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'DeleteVille')), array (  '_controller' => 'GV\\VilleBundle\\Controller\\VilleController::SupprimerVilleAction',));
+            }
+
+            // UpdateVille
+            if (0 === strpos($pathinfo, '/ville/modifier') && preg_match('#^/ville/modifier/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'UpdateVille')), array (  '_controller' => 'GV\\VilleBundle\\Controller\\VilleController::ModifierVilleAction',));
+            }
+
+            // afficherVille
+            if ($pathinfo === '/ville/afficher') {
+                return array (  '_controller' => 'GV\\VilleBundle\\Controller\\VilleController::afficherVilleAction',  '_route' => 'afficherVille',);
+            }
+
+            // rechercherVille
+            if ($pathinfo === '/ville/rechercher') {
+                return array (  '_controller' => 'GV\\VilleBundle\\Controller\\VilleController::RechercherVilleAction',  '_route' => 'rechercherVille',);
+            }
+
+            if (0 === strpos($pathinfo, '/ville/afficher')) {
+                // Afficherdetails
+                if (0 === strpos($pathinfo, '/ville/afficherdetails') && preg_match('#^/ville/afficherdetails/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'Afficherdetails')), array (  '_controller' => 'GV\\VilleBundle\\Controller\\VilleController::afficherdetailsAction',));
+                }
+
+                // afficherVillefront
+                if ($pathinfo === '/ville/afficherfro') {
+                    return array (  '_controller' => 'GV\\VilleBundle\\Controller\\VilleController::frontRechercherVilleAction',  '_route' => 'afficherVillefront',);
+                }
+
+                // afficherdetailsVillefront
+                if (0 === strpos($pathinfo, '/ville/afficherdetailsfro') && preg_match('#^/ville/afficherdetailsfro/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'afficherdetailsVillefront')), array (  '_controller' => 'GV\\VilleBundle\\Controller\\VilleController::afficherdetailsfrontAction',));
+                }
+
+            }
+
+            // rechercherfrontVille
+            if ($pathinfo === '/ville/rechercherfront') {
+                return array (  '_controller' => 'GV\\VilleBundle\\Controller\\VilleController::frontRechercherVilleAction',  '_route' => 'rechercherfrontVille',);
+            }
+
+        }
+
         // gv_user_homepage
         if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'gv_user_homepage')), array (  '_controller' => 'GV\\UserBundle\\Controller\\DefaultController::indexAction',));

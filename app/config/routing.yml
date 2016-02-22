@@ -1,3 +1,7 @@
+gv_ville:
+    resource: "@GVVilleBundle/Resources/config/routing.yml"
+    prefix:   /ville
+
 gv_user:
     resource: "@GVUserBundle/Resources/config/routing.yml"
     prefix:   /
@@ -25,3 +29,4 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+    
